@@ -16,5 +16,5 @@ app.use(routes);
 // if force is set to 'true' in sequelize.sync the tables recreate if there
 // is a new association created
 sequelize.sync({ force:  true }).then(() => {
-  app.listen(PORT, () => console.log('Now listening at port: ' + PORT));
+  app.listen(PORT, () => console.log(`Now listening at port:  ${PORT}`));
 });

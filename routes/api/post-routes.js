@@ -1,26 +1,26 @@
 const router = require('express').Router();
 const {
-  Product,
-  User, 
+  Post,
+  User,
   Comment
 } = require('../../models');
 const { sequelize } = require('../../models/User');
 
 //get all users
-Product.findAll({
-  order: [['created_at', 'DESC']],
+Post.findAll({
+  order: [['created_at', 'DESC']], //make sure the order variables are available or that if not timestamps are added to the post model
   attributes: [
     'id',
-    'product_url',
+    'product_category',
     'title',
-    'created_at',
-    [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE product.id = comment.product_id)'), 'comment_count']
+    'description',
+    [sequelize.literal('(SELECT COUNT(*) FROM comment WHERE product.id = comment.product_id)'), 'comment_count']
   ],
   include: [
     // include the Comment model here:
     {
       model: Comment,
-      attributes: ['id', 'comment_text', 'product_id', 'user_id', 'created_at'],
+      attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
       include: {
         model: User,
         attributes: ['username']
@@ -31,7 +31,7 @@ Product.findAll({
       attributes: ['username']
     }
   ]
- })
+})
 
 router.get('/:id', (req, res) => {
   User.findOne({
@@ -65,10 +65,10 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   Product.create({
-      title: req.body.title,
-      product_url: req.body.product_url,
-      user_id: req.body.user_id
-    })
+    title: req.body.title,
+    product_url: req.body.product_url,
+    user_id: req.body.user_id
+  })
     .then(dbProductData => res.json(dbProductData))
     .catch(err => {
       console.log(err);
@@ -89,12 +89,12 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   Product.update({
-      title: req.body.title
-    }, {
-      where: {
-        id: req.params.id
-      }
-    })
+    title: req.body.title
+  }, {
+    where: {
+      id: req.params.id
+    }
+  })
     .then(dbProductData => {
       if (!dbProductData) {
         res.status(404).json({
@@ -112,10 +112,10 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   Product.destroy({
-      where: {
-        id: req.params.id
-      }
-    })
+    where: {
+      id: req.params.id
+    }
+  })
     .then(dbProductData => {
       if (!dbProductData) {
         res.status(404).json({
