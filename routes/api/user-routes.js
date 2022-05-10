@@ -67,8 +67,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.product('/login', (req, res) => {
-  // expects {email: 'lernantino@gmail.com', password: 'password1234'}
+router.get('/login', (req, res) => {
   User.findOne({
     where: {
       email: req.body.email
