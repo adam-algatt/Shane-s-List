@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const {
   User,
-  Product
+  Post, 
+  Comment
 } = require('../../models');
 
 // get all users
@@ -27,14 +28,14 @@ router.get('/:id', (req, res) => {
         exclude: ['password']
       },
       include: [{
-          model: Product,
-          attributes: ['id', 'title', 'product_url', 'created_at']
+          model: Post,
+          attributes: ['id', 'title', 'product_category', 'created_at']
         },
         {
-          model: Product,
+          model: Post,
           attributes: ['title'],
           through: Comment,
-          as: 'commented_products' 
+          as: 'user_posts' 
         }
       ]
     })
@@ -53,8 +54,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.product('/', (req, res) => {
-  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+router.post('/', (req, res) => {
   User.create({
       username: req.body.username,
       email: req.body.email,

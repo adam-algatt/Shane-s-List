@@ -20,16 +20,6 @@ router.post('/', (req, res) => {
         });
 })
 
-// delete a post from user making sure it's only posts from user making 
-//request and that only the correct post is deleted
-router.delete('/:id', (req, res) => {
-    Comment.destroy({
-        where: {
-            c
-        }
 
-    })
-        .then()
-});
 
 module.exports = router;

@@ -14,7 +14,7 @@ Post.findAll({
     'product_category',
     'title',
     'description',
-    [sequelize.literal('(SELECT COUNT(*) FROM comment WHERE product.id = comment.product_id)'), 'comment_count']
+    [sequelize.literal('(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)'), 'comment_count']
   ],
   include: [
     // include the Comment model here:
@@ -27,6 +27,7 @@ Post.findAll({
       }
     },
     {
+      // not sure if this should be here (appears to already be annotated on the above lines of code)
       model: User,
       attributes: ['username']
     }
@@ -41,51 +42,40 @@ router.get('/:id', (req, res) => {
     },
     include: [
       {
-        model: Product,
-        attributes: ['id', 'title', 'product_url', 'created_at']
+        model: Post,
+        attributes: ['id', 'title', 'product_category', 'created_at']
       },
       // include the Comment model here:
       {
         model: Comment,
         attributes: ['id', 'comment_text', 'created_at'],
         include: {
-          model: Product,
+          model: Post,
           attributes: ['title']
         }
       },
       {
-        model: Product,
+        model: Post,
         attributes: ['title'],
         through: Comment,
-        as: 'commented_products'
+        as: 'user_posts'
       }
     ]
   })
 })
 
 router.post('/', (req, res) => {
-  Product.create({
+  Post.create({
     title: req.body.title,
-    product_url: req.body.product_url,
+    product_category: req.body.product_category,
     user_id: req.body.user_id
   })
-    .then(dbProductData => res.json(dbProductData))
+    .then(dbPostData => res.json(dbPostData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
-
-// PUT /api/posts/upvote
-// router.put('/upvote', (req, res) => {
-//   // custom static method created in models/Product.js
-//   Product.upvote(req.body, { Vote })
-//     .then(updatedPostData => res.json(updatedPostData))
-//     .catch(err => {
-//       console.log(err);
-//       res.status(400).json(err);
-//     });
-// });
 
 router.put('/:id', (req, res) => {
   Product.update({
@@ -111,19 +101,19 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  Product.destroy({
+  Post.destroy({
     where: {
       id: req.params.id
     }
   })
-    .then(dbProductData => {
-      if (!dbProductData) {
+    .then(dbPostData => {
+      if (!dbPosttData) {
         res.status(404).json({
-          message: 'No product found with this id'
+          message: 'No post found with this id'
         });
         return;
       }
-      res.json(dbProductData);
+      res.json(dbPostData);
     })
     .catch(err => {
       console.log(err);
