@@ -11,7 +11,8 @@ Comment.init({
        type: DataTypes.INTEGER, 
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
+        unique: true
     },
     comment_text: {
         type: DataTypes.STRING,
@@ -20,20 +21,20 @@ Comment.init({
             len: [1, 500]
         }
     },
-    user_id: {
+    username: {
        type: DataTypes.INTEGER,
        allowNull: false,
         references: {
             model: 'user',
-            key: 'user_id'
+            key: 'id'
           }
     },
-    product_id: {
+    post_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'product',
-            key: 'product_id'
+            model: 'post',
+            key: 'id'
         }
     }
 }, 

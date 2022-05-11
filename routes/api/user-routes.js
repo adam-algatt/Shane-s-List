@@ -1,15 +1,19 @@
 const router = require('express').Router();
 const {
   User,
-  Product
+  Post,
+  Comment
 } = require('../../models');
+
 
 // get all users
 router.get('/', (req, res) => {
   User.findAll({
-      attributes: {
+      attributes: [
+        'id',
+        'username',
+        'email'],
         exclude: ['password']
-      }
     })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
@@ -23,19 +27,22 @@ router.get('/:id', (req, res) => {
       where: {
         id: req.params.id
       },
-      attributes: {
-        exclude: ['password']
-      },
+      attributes: [
+        'id',
+        'username',
+        'email',
+      ],
+      exclude: ['password'],
+    
       include: [{
-          model: Product,
-          attributes: ['id', 'title', 'product_url', 'created_at']
+          model: Post,
+          attributes: ['id', 'title', 'product_category', 'created_at'],
         },
-        {
-          model: Product,
-          attributes: ['title'],
-          through: Comment,
-          as: 'commented_products' 
-        }
+        // {
+        //   model: Post,
+        //   attributes: ['title'],
+        //   through: Comment,
+        // }
       ]
     })
     .then(dbUserData => {
@@ -53,7 +60,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.product('/', (req, res) => {
+router.post('/', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
       username: req.body.username,
@@ -67,7 +74,7 @@ router.product('/', (req, res) => {
     });
 });
 
-router.product('/login', (req, res) => {
+router.post('/login', (req, res) => {
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
     where: {
@@ -97,7 +104,6 @@ router.product('/login', (req, res) => {
       user: dbUserData,
       message: 'You are now logged in!'
     });
-
   });
 });
 

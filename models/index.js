@@ -1,56 +1,49 @@
 const User = require('./User');
-const Post = require('./Product');
+const Category = require('./Category');
+const Post = require('./Post');
 const Comment = require('./Comment');
 
+
 // // create assoc btwn user and products
-User.belongsToMany(Product, {
-  through: Comment,
-  as: 'commented_products',
-  foreignKey: 'user_id'
+User.hasMany(Post, {
+  foreignKey: 'id'
 });
 
-Product.belongsToMany(User, {
-  through: Comment,
- as: 'commented_products',
-  foreignKey: 'product_id'
+Post.belongsTo(User, {
+  foreignKey: 'id'
 });
 
-// Comment.belongsTo(User, {
-//   foreignKey: 'user_id'
-// });
-
-// Comment.belongsTo(Product, {
-//   foreignKey: 'product_id'
-// });
-
-// User.hasMany(Comment, {
-//   foreignKey: 'user_id'
-// });
-
-// Product.hasMany(Comment, {
-//   foreignKey: 'product_id'
-// });
-
-Comment.belongsTo(User, {
-  foreignKey: 'user_id'
+Post.belongsTo(Category, {
+  foreignKey: 'id'
 });
 
-Comment.belongsTo(Product, {
-  foreignKey: 'product_id'
+Category.hasMany(Post, {
+  foreignKey: 'id'
+});
+
+// Check on associating comments with the correct post and userID simultaneously
+
+Comment.belongsTo(Post, {
+  foreignKey: 'id'
+});
+
+Post.hasMany(Comment, {
+  foreignKey: 'id'
+});
+
+Comment.belongsTo(User, { 
+  as: 'user_comments',
+  foreignKey: 'id'
 });
 
 User.hasMany(Comment, {
-  foreignKey: 'user_id'
+  as: 'user_comments',
+  foreignKey: 'id'
 });
-
-Product.hasMany(Comment, {
-  foreignKey: 'product_id'
-});
-
-
 
 module.exports = {
   User,
-  Product,
-  Comment
+  Category,
+  Post,
+  Comment,
 };
