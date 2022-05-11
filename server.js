@@ -13,8 +13,8 @@ const methodOverride = require('method-override');
 
 const initializePassport = require('./passport-config');
 initializePassport(
-    passport,
-     email => users.find(user => user.email === email),
+    passport, 
+    email => users.find(user => user.email === email),
     id => users.find(user => user.id === id)
 )
 
@@ -27,40 +27,40 @@ app.use(session({
     
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
-    is_logged_in: false,
+    saveUninitialized: false
 }))
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(methodOverride('_method'))
 
 // middleware added to login and register //
-app.get('/', checkAuthenticated, (req, res) => {
+// removed middleware to solve runtime issure//
+app.get('/',(req, res) => {
     res.render('index.ejs', { name: req.user.name }) 
 })
 
-app.get('/login', checkNotAuthenticated, (req, res) => {
+app.get('/login',(req, res) => {
     res.render('login.ejs') 
 })
 
-app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
+app.post('/login', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: 'login',
-    failureFlash: true,
+    failureFlash: true
 }))
 
-app.get('/register', checkNotAuthenticated, (req, res) => {
-    res.render('register.ejs') 
-})
+app.get('/register', (req, res) => {
+        res.render('register.ejs');
+    })
 
-app.post('/register', checkNotAuthenticated, (req, res) => {
+app.post('/register', async (req, res) => {
     try {
-        const hashedPassword = bcrypt.hash(req.body.password, 10)
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)
         users.push({
             id: Date.now().toString(),
             name: req.body.name,
             email: req.body.email,
-            password: hashedPassword,   
+            password: hashedPassword   
          })
          res.redirect('/login')
     } catch {
@@ -76,17 +76,17 @@ app.delete('/logout', (req, res) => {
 
 //  middleware for logging in //
 
-function checkAuthenticated(req, res, next) {
-    if (req.checkAuthenticated()) {
-        return next()
-    }
+//function checkAuthenticated(req, res, next) {
+    //if (req.checkAuthenticated()) {
+   //     return next()
+    //}
 
-    res.redirect('/login')
-}
-function checkNotAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return res.redirect('/')
-    }
-    next()
-}
-app.listen(3006)
+   // res.redirect('/login')
+//}
+//function checkNotAuthenticated(req, res, next) {
+    //if (req.isAuthenticated()) {
+        //return res.redirect('/')
+   // }
+    ////next()
+//}
+app.listen(3001)
