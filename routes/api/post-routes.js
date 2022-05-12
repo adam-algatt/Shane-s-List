@@ -8,7 +8,7 @@ const { sequelize } = require('../../models/User');
 
 //get all users
 Post.findAll({
-  order: [['created_at', 'DESC']], //make sure the order variables are available or that if not timestamps are added to the post model
+  order: [['created_at', 'DESC']], 
   attributes: [
     'id',
     'product_category',
@@ -34,8 +34,10 @@ Post.findAll({
   ]
 })
 
+// do you need to put in the model keyname for http address or can you
+//just put '/:id'
 router.get('/:id', (req, res) => {
-  User.findOne({
+  Post.findOne({
     attributes: { exclude: ['password'] },
     where: {
       id: req.params.id
