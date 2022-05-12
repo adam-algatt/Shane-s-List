@@ -6,6 +6,7 @@ const sequelize = require('../config/connection');
 
 class Post extends Model { }
 
+//Post fields
 Post.init(
   {
     id: {
@@ -15,10 +16,10 @@ Post.init(
       autoIncrement: true
     },
     username: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       references: {
         model: 'user',
-        key: 'username'
+        key: 'id'
       }
     },
     title: {
@@ -36,22 +37,19 @@ Post.init(
       }
     },
     product_category: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'category',
-        key: 'category_name'
-      }
+        key: 'id'
+       }
     }
-  },
+  }, 
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
     modelName: 'post'
-  }
-);
-
-
+});
 
 module.exports = Post;

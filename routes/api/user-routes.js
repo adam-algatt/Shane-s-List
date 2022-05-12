@@ -1,16 +1,19 @@
 const router = require('express').Router();
 const {
   User,
-  Post, 
+  Post,
   Comment
 } = require('../../models');
+
 
 // get all users
 router.get('/', (req, res) => {
   User.findAll({
-      attributes: {
+      attributes: [
+        'id',
+        'username',
+        'email'],
         exclude: ['password']
-      }
     })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
@@ -24,19 +27,22 @@ router.get('/:id', (req, res) => {
       where: {
         id: req.params.id
       },
-      attributes: {
-        exclude: ['password']
-      },
+      attributes: [
+        'id',
+        'username',
+        'email',
+      ],
+      exclude: ['password'],
+    
       include: [{
           model: Post,
-          attributes: ['id', 'title', 'product_category', 'created_at']
+          attributes: ['id', 'title', 'product_category', 'created_at'],
         },
-        {
-          model: Post,
-          attributes: ['title'],
-          through: Comment,
-          as: 'user_posts' 
-        }
+        // {
+        //   model: Post,
+        //   attributes: ['title'],
+        //   through: Comment,
+        // }
       ]
     })
     .then(dbUserData => {
@@ -55,6 +61,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
       username: req.body.username,
       email: req.body.email,
@@ -67,7 +74,8 @@ router.post('/', (req, res) => {
     });
 });
 
-router.get('/login', (req, res) => {
+router.post('/login', (req, res) => {
+  // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
     where: {
       email: req.body.email
@@ -96,10 +104,8 @@ router.get('/login', (req, res) => {
       user: dbUserData,
       message: 'You are now logged in!'
     });
-
   });
 });
-
 
 router.put('/:id', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}

@@ -4,7 +4,7 @@ const {
 } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Comment extends Model {}
+class Category extends Model {}
 
 Category.init({
     id: {
@@ -17,9 +17,9 @@ Category.init({
         type: DataTypes.STRING,
         allowNull: false
     }
-}, 
+},
 {
-    sequelize,
+    sequelize, 
     timestamps: false,
     freezeTableName: true,
     underscored: true,
