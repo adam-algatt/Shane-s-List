@@ -18,10 +18,10 @@ router.get('/', (req, res) => {
       });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:username', (req, res) => {
     Comment.findOne({
         where: {
-          id: req.params.id
+          username: req.params.username
         },
         attributes: [
           'id',

@@ -36,28 +36,13 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/:id', (req, res) => {
+//20220511 :id to :title in head
+router.get('/:title', (req, res) => {
   Post.findOne({
     where: {
-      id: req.params.id
+      title: req.params.title
     },
-    attributes: [
-      'id',
-      'title',
-      'username',
-      'description',    
-    ], 
-    include: [
-      // include the Comment model here:
-      {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'created_at'],
-        include: {
-          model: Post,
-          attributes: ['title']
-        }
-      },
-    ]
+    include: Comment
   })
   .then(dbPostData => {
   if (!dbPostData) {
@@ -88,8 +73,10 @@ router.post('/', (req, res) => {
     });
 });
 
-
-router.put('/:id', (req, res) => {
+// How do you allow only the user who generated the post 
+// to make changes to the whole post 
+// if user id === user_post id joining table???
+router.put('/:title', (req, res) => {
   Post.update({
       title: req.body.title
     }, {
@@ -112,8 +99,10 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:title', (req, res) => {
   Post.destroy({
+    title: req.body.title
+  }, {
       where: {
         id: req.params.id
       }
