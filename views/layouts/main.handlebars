@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shane's List</title>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <header>
+        <div =class="containter">
+            <nav class="row"> 
+            <a class="justify-content-md-begin" id="login">Login</a>
+            <a class="justify-content-md-end" id="register">Register</a>
+        </nav>
+        </div> 
+        <div class="container" id="header_text">
+            <h1 class="row justify-content-md-center">
+                <a href="/">Shane's List</a>
+            </h1>
+        </div>
+    </header>
+         <div class="container" id="subtitle">
+            <h2 class="row justify-content-md-center">Buy and Sell Your Stuff</h2>
+        </div>
+
+        <div class="container" id="category_text">
+        <div class="row row-cols-5">
+        <div class="col">Automotive</div>
+        <div class="col">Clothing</div>
+        <div class="col">Electronics</div>
+        <div class="col">Home</div>
+        <div class="col">Outdoors</div>
+    </div>
+    <div class="row row-cols-5" id="category_icon">
+        <button class="col" type="click" id="auto_btn"></button>
+        <button class="col" id="clothing_btn"></button>
+        <button class="col" id="electronics_btn"></button>
+        <button class="col" id="home_btn"></button>
+        <button class="col" id="outdoors_btn"></button>
+    </div>
+
+    <main>
+            {{{ body }}}
+    </main>
+
+    <footer class="container">
+        <h1 classs="row justify-content-md-center" id="footer_text">Thanks for visiting!</h1>      
+    </footer>
+    
+        <script src="/javascript/view_posts.js"></script>
+</body>
+
+</html>
