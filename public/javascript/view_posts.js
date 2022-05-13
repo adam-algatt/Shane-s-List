@@ -1,12 +1,13 @@
-async function viewPost() {
+async function viewPost(event) {
+        
     const response = await fetch(`/api/posts/1`, {
         method: 'GET',
-        // body: JSON.stringify({
-        //     id: id,
-        //     title: title,
-        //     description: description,
-        //     username: username,            
-        // }),
+        body: JSON.stringify({
+            post_id: id,
+            title,
+            description,
+            username,            
+        }),
         headers: {
             'Content-Type': 'application/json'
         },
@@ -14,11 +15,10 @@ async function viewPost() {
     });
 
     if (response.ok) {        
-        document.location.reload();
+        document.location.reload('/');
     } else {
         alert(response.statusText);
     }
-
     console.log(response);
 }
 
