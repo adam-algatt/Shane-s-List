@@ -19,18 +19,6 @@ router.get('/', (req, res) => {
                 model: Category,
                 attributes: ['category_name']
             }
-        //     {
-        //         model: Comment,
-        //         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-        //         include: {
-        //             model: User,
-        //             attributes: ['username']
-        //         }
-        //     },
-        //     {
-        //         model: User,
-        //         attributes: ['username']
-        //     }
         ]
     })
         .then(dbPostData => {
