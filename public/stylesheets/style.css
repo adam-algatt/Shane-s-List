@@ -65,8 +65,9 @@ body, html {
   text-align: center;
   font-weight: bolder;
 }
+
 #home_btn {
-  height: 144px;;
+  height: 144px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

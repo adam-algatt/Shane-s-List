@@ -43,13 +43,14 @@
             <div class="col">Outdoors</div>
         </div>
             <div class="row row-cols-5" id="category_icon">
-            <button class="col" type="click" id="auto_btn"></button>
-            <button class="col" id="clothing_btn"></button>
-            <button class="col" id="electronics_btn"></button>
-            <button class="col" id="home_btn"></button>
-            <button class="col" id="outdoors_btn"></button>
-        </div>
-        
+                <button class="col" type="click" id="auto_btn" name="category_btn" value="1"></button>
+                <button class="col" type="click" id="clothing_btn" name="category_btn" value="2"></button>
+                <button class="col" type="click" id="electronics_btn" name="category_btn" value="3"></button>
+                <button class="col" type="click" id="home_btn" name="category_btn" value="4"></button>
+                <button class="col" type="click" id="outdoors_btn" name="category_btn" value="5"></button>
+            </div>
+
+            <script src="/javascript/view_posts.js"></script>
     <main>
             {{{ body }}}
     </main>
@@ -58,7 +59,7 @@
         <h1 classs="row justify-content-md-center" id="footer_text">Thanks for visiting!</h1>      
     </footer>
 
-   
+
 </body>
 
 </html>
