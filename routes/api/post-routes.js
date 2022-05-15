@@ -2,7 +2,8 @@ const router = require('express').Router();
 const {
   Post,
   User, 
-  Comment
+  Comment,
+  Category
 } = require('../../models');
 const { sequelize } = require('../../models/User');
 
@@ -11,23 +12,33 @@ router.get('/', (req, res) => {
   Post.findAll({
     //order: ['created_at'],
     attributes: [
-      'id',
+      'post_id',
       'title',
-      'username',
+      'post_user_id',
       'description',
-      [sequelize.literal('(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)'), 'comment_count']
+      'product_category',
+      [sequelize.literal('(SELECT COUNT(*) FROM comment WHERE post.post_id = comment.post_id)'), 'comment_count']
     ],
     include: [
-      // include the Comment model here:
-      {
-        model: Comment,
-          attributes: ['id', 'comment_text', 'post_id', 'username', 'created_at'],
+        // // include the Comment model here:
+        {
+          model: Comment,
+          attributes: ['comment_id', 'comment_user_id', 'comment_text', 'created_at'],
+            // include User model here for comment username
             include: {
-              model: Post,
-              attributes: ['username']
+              model: User,
+              attributes: ['username'],
             }
-      },
-    ]
+        },
+        {
+        model: User,
+        attributes: ['username'],
+        },
+        {
+          model: Category,
+          attributes: ['category_name']
+        }
+    ],         
   })
   .then(dbPostData => res.json(dbPostData))
   .catch(err => {
@@ -36,22 +47,22 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:post_id', (req, res) => {
   Post.findOne({
     where: {
-      id: req.params.id
+      post_id: req.params.post_id
     },
     attributes: [
-      'id',
+      'post_id',
       'title',
-      'username',
+      'post_user_id',
       'description',    
     ], 
     include: [
       // include the Comment model here:
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'created_at'],
+        attributes: ['comment_id', 'comment_user_id', 'comment_text', 'created_at'],
         include: {
           model: Post,
           attributes: ['title']
@@ -78,7 +89,7 @@ router.post('/', (req, res) => {
   Post.create({
       title: req.body.title,
       description: req.body.description,
-      //product_category: req.body.product_category,
+      product_category: req.body.product_category,
       user_id: req.body.user_id
     })
     .then(dbPostData => res.json(dbPostData))
@@ -89,12 +100,12 @@ router.post('/', (req, res) => {
 });
 
 
-router.put('/:id', (req, res) => {
+router.put('/:post_id', (req, res) => {
   Post.update({
       title: req.body.title
     }, {
       where: {
-        id: req.params.id
+        id: req.params.post_id
       }
     })
     .then(dbPostData => {
@@ -112,10 +123,10 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:post_id', (req, res) => {
   Post.destroy({
       where: {
-        id: req.params.id
+        id: req.params.post_id
       }
     })
     .then(dbPostData => {

@@ -12,9 +12,16 @@
 <body>
     <header>
         <div =class="containter">
-            <nav class="row"> 
-            <a class="justify-content-md-begin" id="login">Login</a>
-            <a class="justify-content-md-end" id="register">Register</a>
+            <nav class="row row-cols-12"> 
+            <span class="col"></span>
+            <a class="col justify-content-md-end" id="login">Login</a>
+            <a class="col justify-content-md-end" id="register">Register</a>
+            <span class="col"></span>
+            <span class="col"></span>
+            <span class="col"></span>
+            <span class="col"></span>
+            <a href="/dashboard" class="col justify-content-md-end" id="sell">Sell an Item</a>
+            <span class="col"></span>
         </nav>
         </div> 
         <div class="container" id="header_text">
@@ -28,21 +35,22 @@
         </div>
 
         <div class="container" id="category_text">
-        <div class="row row-cols-5">
-        <div class="col">Automotive</div>
-        <div class="col">Clothing</div>
-        <div class="col">Electronics</div>
-        <div class="col">Home</div>
-        <div class="col">Outdoors</div>
-    </div>
-    <div class="row row-cols-5" id="category_icon">
-        <button class="col" type="click" id="auto_btn"></button>
-        <button class="col" id="clothing_btn"></button>
-        <button class="col" id="electronics_btn"></button>
-        <button class="col" id="home_btn"></button>
-        <button class="col" id="outdoors_btn"></button>
-    </div>
+            <div class="row row-cols-5">
+            <div class="col">Automotive</div>
+            <div class="col">Clothing</div>
+            <div class="col">Electronics</div>
+            <div class="col">Home</div>
+            <div class="col">Outdoors</div>
+        </div>
+            <div class="row row-cols-5" id="category_icon">
+                <button class="col" type="click" id="auto_btn" name="category_btn" value="1"></button>
+                <button class="col" type="click" id="clothing_btn" name="category_btn" value="2"></button>
+                <button class="col" type="click" id="electronics_btn" name="category_btn" value="3"></button>
+                <button class="col" type="click" id="home_btn" name="category_btn" value="4"></button>
+                <button class="col" type="click" id="outdoors_btn" name="category_btn" value="5"></button>
+            </div>
 
+            <script src="/javascript/view_posts.js"></script>
     <main>
             {{{ body }}}
     </main>
@@ -51,7 +59,7 @@
         <h1 classs="row justify-content-md-center" id="footer_text">Thanks for visiting!</h1>      
     </footer>
 
-   
+
 </body>
 
 </html>

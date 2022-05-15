@@ -10,7 +10,7 @@ const {
 router.get('/', (req, res) => {
   User.findAll({
       attributes: [
-        'id',
+        'user_id',
         'username',
         'email'],
         exclude: ['password']
@@ -22,13 +22,13 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:user_id', (req, res) => {
   User.findOne({
       where: {
-        id: req.params.id
+        user_id: req.params.user_id
       },
       attributes: [
-        'id',
+        'user_id',
         'username',
         'email',
       ],
@@ -36,12 +36,12 @@ router.get('/:id', (req, res) => {
     
       include: [{
           model: Post,
-          attributes: ['id', 'title', 'product_category', 'created_at'],
+          attributes: ['post_user_id', 'title', 'product_category', 'created_at'],
         },
         // {
         //   model: Post,
         //   attributes: ['title'],
-        //   through: Comment,
+        //   //through: Comment,
         // }
       ]
     })
@@ -114,7 +114,7 @@ router.put('/:id', (req, res) => {
   User.update(req.body, {
       individualHooks: true,
       where: {
-        id: req.params.id
+        user_id: req.params.user_id
       }
     })
     .then(dbUserData => {
@@ -132,10 +132,10 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:user_id', (req, res) => {
   User.destroy({
       where: {
-        id: req.params.id
+        user_id: req.params.user_id
       }
     })
     .then(dbUserData => {

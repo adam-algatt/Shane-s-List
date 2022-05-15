@@ -1,25 +1,20 @@
+
 async function viewPost(event) {
+    event.preventDefault();
         
-    const response = await fetch(`/api/posts/1`, {
-        method: 'GET',
-        body: JSON.stringify({
-            post_id: id,
-            title,
-            description,
-            username,            
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        },
-   
-    });
+        const category_id = document.querySelector('button[name="category_btn"]').value;
 
-    if (response.ok) {        
-        document.location.reload('/');
-    } else {
-        alert(response.statusText);
+        const response = await fetch(`/api/categories/` + category_id, {
+            method: 'GET', 
+            // where: 
+            // category_id = req.params.category_id
+            // }
+        })
+        if (response.ok) {        
+            document.location.replace('/api/categories/' + category_id);
+        } else {
+            alert(response.statusText);
+        }
     }
-    console.log(response);
-}
 
-document.querySelector('#auto_btn').addEventListener('click', viewPost);
+document.querySelector('#category_icon').addEventListener('click', viewPost);
