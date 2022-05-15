@@ -3,7 +3,7 @@ async function viewPost(event) {
     const response = await fetch(`/api/posts/1`, {
         method: 'GET',
         body: JSON.stringify({
-            post_id: id,
+            post_id: post_id,
             title,
             description,
             username,            

@@ -6,9 +6,9 @@ const {
 router.get('/', (req, res) => {
     Comment.findAll({
         attributes: [
-          'id',
+          'comment_id',
           'comment_text',
-          'username',
+          'comment_user_id',
           'post_id'],
       })
       .then(dbCommentData => res.json(dbCommentData))
@@ -18,15 +18,15 @@ router.get('/', (req, res) => {
       });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:comment_id', (req, res) => {
     Comment.findOne({
         where: {
-          id: req.params.id
+          comment_id: req.params.comment_id
         },
         attributes: [
-          'id',
+          'comment_id',
           'comment_text',
-          'username',
+          'comment_user_id',
           'post_id',
         ],
     })
@@ -61,7 +61,7 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
   Comment.destroy({
       where: {
-        id: req.params.id
+        id: req.params.comment_id
       }
     })
     .then(dbCommentData => {
