@@ -116,7 +116,7 @@ body, html {
   background-color: #f8f8f8;
   font-size: 16px;
 }
-#post-description {
+#post-description, #comment-body {
   width: 100%;
   height: 70px;
   padding: 12px 20px;
