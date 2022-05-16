@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, Category, 
-    // User, Comment, Vote 
+const { Post, Category, User, 
+    //Comment, Vote 
 } = require('../models');
 
 router.get('/', (req, res) => {
@@ -24,8 +24,8 @@ router.get('/', (req, res) => {
         .then(dbPostData => {
             const posts = dbPostData.map(post => post.get({ plain: true }));
             res.render('homepage', { 
-                posts,
-                // loggedIn: req.session.loggedIn }
+                posts, 
+            //    loggedIn: req.session.loggedIn 
             });
         })
         .catch(err => {
@@ -34,13 +34,13 @@ router.get('/', (req, res) => {
     });
 });
 
-// router.get('/login', (req, res) => {
-//     if (req.session.loggedIn) {
-//         res.redirect('/');
-//         return;
-//     }
-//     res.render('login');
-// });
+router.get('/login', (req, res) => {
+    // if (req.session.loggedIn) {
+    //     res.redirect('/');
+    //     return;
+    // }
+    res.render('login');
+});
 
 // router.get('/post/:id', (req, res) => {
 //     Post.findOne({

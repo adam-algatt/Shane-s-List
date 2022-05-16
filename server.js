@@ -3,7 +3,11 @@ const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const routes = require('./routes');
-
+const bcrypt = require('bcrypt');
+const passport = require('passport');
+const flash = require('express-flash');
+const session = require('express-session');
+const methodOverride = require('method-override');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -11,6 +15,29 @@ const PORT = process.env.PORT || 3001;
 const sequelize = require('./config/connection');
 
 const hbs =exphbs.create({ });
+
+const initializePassport = require('./passport-config.js');
+initializePassport(
+  passport,
+  email => users.find(user => user.email === email),
+  id => users.find(user => user.id === id)
+)
+
+// const users = []
+
+// app.set('view-engine', 'ejs')
+// app.use(express.urlencoded({ extended: false }));
+// app.use(flash());
+// app.use(session({
+    
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: false
+// }))
+
+// app.use(passport.initialize())
+// app.use(passport.session())
+// app.use(methodOverride('_method'))
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
