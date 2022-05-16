@@ -1,1 +1,33 @@
-# Shane-s-List
+![License: GPL v3](https://img.shields.io/badge/License-NPM-yellow.svg)
+  
+  # Shane's List
+ 
+  ## Description
+  Shane's List is an online classified ad service where registered memebers can post items for sale or find items to purchase from other registered members.  Shane's List simplified user interface and limited number of categories makes it easy to navigate and find what you're looking for.  Shane's List is a classified ad service only and is not involved in the transaction between users other than providing a means of connecting.  Users are advised to do their own due diligience when making a purchase from any member on Shane's List.  To aid a purchaser on making an informed decision regarding a purchase, Shane's List provides a user comment function so buyers can leave comments regarding their experience with a seller.  
+
+  ## Table of Contents
+  * [Instatallation](#installation)
+  * [Usage](#usage)
+  * [License](#license)
+  * [Contribute](#contribute)
+  * [Tests](#tests)
+  
+  ## Installation
+  No installation necessary.  All you need is access to the internet.
+
+  ## Usage
+  Anyone with internet access can reach the site.  To see seller contact information, place an ad, or leave a comment a user must register.  Registration only requires an email address.
+
+  ## License
+  The application is covered by the following license:  NPM
+    
+  ## Contribute
+  Feel free to do a pull request from GitHub.  
+    
+  ## Tests
+  No testing required.
+    
+  ## Questions
+  Please visit my GitHub Overview page at: https://github.com/Multiple
+  If you have any questions regardinmg this application please email me at [Shaneslist@gmail.com](Shaneslist@gmail.com)
+  
