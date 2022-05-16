@@ -51,7 +51,6 @@ router.get('/post/:post_id', (req, res) => {
             'title',
             'description',
             'product_category'
-            //[sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
         ],
         include: [
             {
@@ -64,7 +63,11 @@ router.get('/post/:post_id', (req, res) => {
             },
             {
                 model: User,
-                attributes: ['username']
+                attributes: ['username', 'email']
+            },
+            {
+                model: Category,
+                attributes: ['category_name']
             }
         ]
     })
