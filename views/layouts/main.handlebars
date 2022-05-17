@@ -11,26 +11,21 @@
 </head>
 
 <body>
-    <header>
-        <div class="containter-fluid">
-            <nav class="row">
-                {{!-- <span class="col"></span> --}}
-                <a class="col justify-content-md-end" id="login">Login</a>
-                <a class="col justify-content-md-end" id="register">Register</a>
-                {{!-- <span class="col"></span>
-                <span class="col"></span>
-                <span class="col"></span>
-                <span class="col"></span> --}}
-                <a href="/dashboard" class="col justify-content-md-end text-nowrap" id="sell">Sell an Item</a>
-                {{!-- <span class="col"></span> --}}
-            </nav>
-        </div>
-        <div class="container" id="header_text">
-            <h1 class="row justify-content-md-center">
-                <a href="/">Shane's List</a>
-            </h1>
-        </div>
-    </header>
+
+          <nav class="navbar fixed-top navbar-light bg-light">
+        <ul class="navbar-nav d-inline justify-content-center">
+          <a class="nav-link d-inline" id="login">Login</a>
+          <a class="nav-link d-inline ml-3" id="register">Register</a>
+        </ul>
+        <ul class="navbar-nav d-inline">
+        <a class="navbar-brand" href="/">Shane's List</a>
+      </ul>
+      <ul class="navbar-nav ml auto d-inline">
+        <a href="/dashboard"class="nav-link" id="sell">Sell an Item</a>
+      </ul>
+      </nav>
+
+
     <div class="container-fluid" id="subtitle">
         <h2 class="row justify-content-md-center">Buy and Sell Your Stuff</h2>
     </div>
