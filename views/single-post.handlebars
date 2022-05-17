@@ -1,15 +1,13 @@
 {{> single-post-info post}}
 
 {{!-- {{#if loggedIn}} --}}
-<form class="comment-form">
-    <div>
-        <h4>Leave a comment</h4>
-        <textarea name="comment-body" id="comment-body"></textarea>
+<form class="comment-form ml-5 mt-4 container-fluid">
+    <div class="row d-block">
+        <h4 class="font-weight-bold pb-3 col-7 text-nowrap mr-5 ">Leave a comment</h4>
+        <textarea name="comment-body" id="comment-body" class="col-7"></textarea>
     </div>
-
-    <div>
-        <button type="submit" class="btn">Save</button>
-       
+    <div class="row">
+        <button type="submit" class="btn btn-primary btn-lg btn-block col-7">Save</button>
     </div>
 </form>
 {{!-- {{/if}} --}}
