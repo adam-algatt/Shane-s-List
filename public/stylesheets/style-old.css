@@ -2,26 +2,10 @@
 body, html {
   height: 100%;
   padding: 0;
-  margin: auto;
+  margin: 0;
   font-family: sans-serif;
   color: #333;
-  overflow-x: hidden;
 }
-
-ul {
-  list-style: none;
-}
-
-.container-fluid {
-  max-width: 98vw;
-  /* min-height: fit-content; */
-
-}
-
-.col {
-  text-align: center;
-  font-weight: bolder;
-} 
 
 #login {
   font-weight: bolder;
@@ -37,7 +21,6 @@ ul {
 
 #subtitle {
   background-color: rgb(174, 179, 184);
-  margin: 10% auto 5% auto;
 }
 
 #category_text {
@@ -46,82 +29,60 @@ ul {
   padding-bottom: 36px;
 }
 
+#category_icon {
+  padding-top: 12px;
+  padding-bottom: 36px;
+}
 
 #auto_btn {
+  height: 144px;;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  min-height: clamp(144px, 350px, 450px); 
-  background-size: 100%;
-  background-image: url("https://media.istockphoto.com/vectors/car-icon-auto-vehicle-isolated-transport-icons-automobile-silhouette-vector-id1273534607?k=20&m=1273534607&s=612x612&w=0&h=Uynt53JLF7_JUxklSlCNP-KVm-CNLUkgpgewc2AOO2I=");
+  background-color: white;
+  background-image: url("https://media.istockphoto.com/vectors/car-icon-auto-vehicle-isolated-transport-icons-automobile-silhouette-vector-id1273534607?k=20&m=1273534607&s=612x612&w=0&h=Uynt53JLF7_JUxklSlCNP-KVm-CNLUkgpgewc2AOO2I=")
 }
 
 #clothing_btn {
+  height: 144px;;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  min-height: clamp(144px, 350px, 450px); 
-  background-size: 75%; 
+  background-color: white;
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzYamufnM49T5AqY2h40awLvlHLhr3C8Xc_g&usqp=CAU")
 }
 
 #electronics_btn {
+  height: 144px;;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  min-height: clamp(144px, 350px, 450px); 
-  background-size: 60%; 
   background-image: url("https://static.thenounproject.com/png/37565-200.png");
+  background-color: white;
+}
+
+.col {
+  text-align: center;
+  font-weight: bolder;
 }
 
 #home_btn {
+  height: 144px;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  min-height: clamp(144px, 350px, 450px); 
-  background-size: 70%; 
   background-image: url("https://i.pinimg.com/originals/a8/be/9c/a8be9cce0543ef25ba2403eedde4e8ac.png");
+  background-color: white;
 }
 
 #outdoors_btn {
+  height: 144px;;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  min-height: clamp(144px, 350px, 450px); 
-   background-size: 65%; 
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnRO-7g77IiXKIqcfkflUlkubmWwWwM2A0YA&usqp=CAU");
-}
-
-#category-icon-container a {
- padding-top: 12px;
- padding-bottom: 36px;
   background-color: white;
-  }
-
-  /* Category Icon End */
-
-  /* start hr pre injected user posts */
-  .wrapper {
-    padding-bottom: 80px; 
-  }
-
-  .divider
-{
-	position: relative;
-	margin-top: 50px;
-	height: 1px;
-  padding-bottom: 35px;
 }
-
-.div-transparent:before
-{
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 5%;
-	right: 5%;
-	width: 90%;
-	height: 1px;
-	background-image: linear-gradient(to right, transparent, rgb(48,49,51), transparent);
-}
-
-
-  /* End  hr pre injected user posts */
 
 #footer_text {
   text-align: center;
@@ -190,5 +151,18 @@ ul {
   transition: background-color .1s;
   cursor: pointer;
   border-radius: 5px;
-  min-width: fit-content;
+  width: 120px;
+}
+
+#username-signup, #email-login, #password-login, #email-signup, #password-signup {
+  width: 40%;
+  height: 35px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  margin: 8px;
+  align-items: end;
 }
