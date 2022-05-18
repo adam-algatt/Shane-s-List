@@ -1,0 +1,42 @@
+<section>
+    <h2>Create New Post</h2>
+
+    <form class="new-post-form">
+        <div>
+            <label for="post-title">Title:     </label>
+            <input type="text" id="post-title" name="post-title" required/>
+        </div>
+        <div>
+            <label for="post-description">Item Description:    </label>
+            <input type="text" id="post-description" name="post-description" required />
+        </div>
+        <div id="category_div">
+            <label for="category">Select Category:    </label>
+            <select name="post-category" id="category" required>
+                <option value="1">Automotive</option>
+                <option value="2">Clothing</option>
+                <option value="3">Electronics</option>
+                <option value="4">Home</opiont>
+                <option value="5">Outdoor</option>
+            </select>
+        </div>
+        <button type="submit" class="btn">Save</button>
+    </form>
+</section>
+
+{{!-- {{#if posts.length}}
+<section>
+    <h2>Your Posts</h2>
+    <ol>
+        {{#each posts as |post|}}
+        <li>
+            {{> post-info post}}
+            <br>
+            <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+        </li>
+        {{/each}}
+    </ol>
+</section>
+{{/if}} --}}
+
+<script src="/javascript/add_post.js"></script>

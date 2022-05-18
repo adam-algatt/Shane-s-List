@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shane's List</title>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <header>
+        <div =class="containter">
+            <nav class="row row-cols-12"> 
+                <span class="col"></span>
+                <a href="/login" class="col justify-content-md-end" id="login">Register New User</a>
+                <a href="/login" class="col justify-content-md-end" id="register">User Login</a>
+                <a href="/" class="col justify-content-md-end" id="reset">Reset</a>
+                <span class="col"></span>
+                <span class="col"></span>
+                <span class="col"></span>
+                <span class="col"></span>
+                {{!-- {{#if loggedIn}} --}}
+                <a href="/dashboard" class="col justify-content-md-end" id="sell">Sell an Item</a>
+                {{!-- {{/if}} --}}
+                <span class="col"></span>
+            </nav>
+        </div> 
+        <div class="container" id="header_text">
+            <h1 class="row justify-content-md-center">Shane's List</h1>   
+        </div>
+    </header>
+         <div class="container" id="subtitle">
+            <h2 class="row justify-content-md-center">Buy and Sell Your Stuff</h2>
+        </div>
+
+        <div class="container" id="category_text">
+            <div class="row row-cols-5">
+            <div class="col">Automotive</div>
+            <div class="col">Clothing</div>
+            <div class="col">Electronics</div>
+            <div class="col">Home</div>
+            <div class="col">Outdoors</div>
+        </div>
+            <div class="row row-cols-5" id="category_icon">
+                <button class="col" type="button" id="auto_btn" name="category_btn" value="1"></button>
+                <button class="col" type="button" id="clothing_btn" name="category_btn" value="2"></button>
+                <button class="col" type="click" id="electronics_btn" name="category_btn" value="3"></button>
+                <button class="col" type="click" id="home_btn" name="category_btn" value="4"></button>
+                <button class="col" type="click" id="outdoors_btn" name="category_btn" value="5"></button>
+            </div>
+
+            <script src="/javascript/view_posts.js"></script>
+    <main>
+            {{{ body }}}
+    </main>
+
+    <footer class="container">
+        <h1 classs="row justify-content-md-center" id="footer_text">Thanks for visiting!</h1>      
+    </footer>
+
+
+</body>
+
+</html>
