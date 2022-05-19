@@ -8,13 +8,14 @@ const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
+const helpers = require('./utils/helpers')
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 const sequelize = require('./config/connection');
 
-const hbs =exphbs.create({ });
+const hbs =exphbs.create({ helpers });
 
 const initializePassport = require('./passport-config.js');
 initializePassport(

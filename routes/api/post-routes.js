@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-  Post,
+  Posts,
   User, 
   Comment,
   Category
@@ -9,7 +9,7 @@ const { sequelize } = require('../../models/User');
 
 //get all posts
 router.get('/', (req, res) => {
-  Post.findAll({
+  Posts.findAll({
     //order: ['created_at'],
     attributes: [
       'post_id',
@@ -48,7 +48,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:post_id', (req, res) => {
-  Post.findOne({
+  Posts.findOne({
     where: {
       post_id: req.params.post_id
     },
@@ -64,7 +64,7 @@ router.get('/:post_id', (req, res) => {
         model: Comment,
         attributes: ['comment_id', 'comment_user_id', 'comment_text', 'created_at'],
         include: {
-          model: Post,
+          model: Posts,
           attributes: ['title']
         }
       },
@@ -86,7 +86,7 @@ router.get('/:post_id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  Post.create({
+  Posts.create({
       title: req.body.title,
       description: req.body.description,
       product_category: req.body.product_category,
@@ -101,7 +101,7 @@ router.post('/', (req, res) => {
 
 
 router.put('/:post_id', (req, res) => {
-  Post.update({
+  Posts.update({
       title: req.body.title
     }, {
       where: {
@@ -124,9 +124,9 @@ router.put('/:post_id', (req, res) => {
 });
 
 router.delete('/:post_id', (req, res) => {
-  Post.destroy({
+  Posts.destroy({
       where: {
-        id: req.params.post_id
+        post_id: req.params.post_id
       }
     })
     .then(dbPostData => {

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Category, Post, User } = require('../../models');
+const { Category, Posts, User } = require('../../models');
 
 router.get('/:category_id', (req, res) => {
     Category.findOne({
@@ -12,7 +12,7 @@ router.get('/:category_id', (req, res) => {
         ],
         include: [
             {
-            model: Post,
+            model: Posts,
             attributes: ['title', 'description'],
                 include: {
                     model: User,

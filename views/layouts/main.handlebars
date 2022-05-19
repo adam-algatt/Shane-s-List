@@ -1,67 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shane's List</title>
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
 
-<body>
-    <header>
-        <div =class="containter">
-            <nav class="row row-cols-12"> 
-                <span class="col"></span>
-                <a href="/login" class="col justify-content-md-end" id="login">Login</a>
-                <a class="col justify-content-md-end" id="register">Register</a>
-                <span class="col"></span>
-                <span class="col"></span>
-                <span class="col"></span>
-                <span class="col"></span>
-                {{!-- {{#if loggedIn}} --}}
-                <a href="/dashboard" class="col justify-content-md-end" id="sell">Sell an Item</a>
-                {{!-- {{/if}} --}}
-                <span class="col"></span>
-            </nav>
-        </div> 
-        <div class="container" id="header_text">
-            <h1 class="row justify-content-md-center">
-                <a href="/">Shane's List</a>
-            </h1>
-        </div>
-    </header>
-         <div class="container" id="subtitle">
-            <h2 class="row justify-content-md-center">Buy and Sell Your Stuff</h2>
-        </div>
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Shane's List</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
 
-        <div class="container" id="category_text">
-            <div class="row row-cols-5">
-            <div class="col">Automotive</div>
-            <div class="col">Clothing</div>
-            <div class="col">Electronics</div>
-            <div class="col">Home</div>
-            <div class="col">Outdoors</div>
-        </div>
-            <div class="row row-cols-5" id="category_icon">
-                <button class="col" type="button" id="auto_btn" name="category_btn" value="1"></button>
-                <button class="col" type="button" id="clothing_btn" name="category_btn" value="2"></button>
-                <button class="col" type="click" id="electronics_btn" name="category_btn" value="3"></button>
-                <button class="col" type="click" id="home_btn" name="category_btn" value="4"></button>
-                <button class="col" type="click" id="outdoors_btn" name="category_btn" value="5"></button>
+  <body>
+    <nav class="navbar fixed-top navbar-light bg-light p-3"> 
+        <ul class="navbar-nav d-inline justify-content-center">
+            <a href="/login" class="nav-link d-inline" id="login">Login</a>
+            <a href="/register" class="nav-link d-inline ml-3" id="register">Register</a>
+        </ul>
+        
+        <ul class="navbar-nav d-inline">
+            <a href="/" class="navbar-brand">Shane's List</a>
+        </ul>
+
+        <ul class="navbar-nav ml auto d-inline"></ul>
+            {{!-- {{#if loggedIn}} --}}
+            <a href="/dashboard" class="nav-link" id="sell">Sell an Item</a>
+            {{!-- {{/if}} --}}
+        </ul>
+    </nav>
+
+    <div class="container-fluid" id="subtitle">
+        <h2 class="row justify-content-md-center p-4">Buy and Sell Your Stuff</h2>
+    </div>
+
+    <div class="container-fluid p-3" id="category_text">
+        <div class="row">
+        <div class="col-2 text-center">Automotive</div>
+        <div class="col-2 text-center">Clothing</div>
+        <div class="col-2 text-center">Electronics</div>
+        <div class="col-2 text-center">Home</div>
+        <div class="col-2 text-center">Outdoors</div>
+    </div>
+
+    <div class="container-fluid p-3">
+        <div class="row" id="category-icon-container">
+            <div class="col-2">
+                <a href="/categories/1" class="btn btn-light mx-1 mt-3 py-1 col-2" type="click" id="auto_btn" name="category_btn" value="1"></a>
             </div>
+            <div class="col-2">
+                <a href="/categories/2" class="btn btn-light col-2 mx-1 mt-3" type="click" id="clothing_btn" name="category_btn" value="2"></a>
+            </div>
+            <div class="col-2">
+                <a href="/categories/3" class="btn btn-light col-2 mx-1" type="click" id="electronics_btn" name="category_btn" value="3"></a>
+            </div>
+              <div class="col-2">
+                <a href="/categories/4" class="btn btn-light col-2 mx-1" type="click" id="home_btn" name="category_btn" value="4"></a>
+              </div>
+            <div class="col-2">
+                <a href="/categories/5" class="btn btn-light col-2" type="click" id="outdoors_btn" name="category_btn" value="5"></a>
+            </div>
+        </div>
+    </div>
+  </div>
+      <!-- <script src="/javascript/view_posts.js"></script> -->
 
-            <script src="/javascript/view_posts.js"></script>
-    <main>
-            {{{ body }}}
-    </main>
+      <h2 class="mx-auto text-center pb-5">User Posts</h2>
+  <div class="wrapper">
+      <div class="divider div-transparent pb-4"></div>
+  </div>
 
-    <footer class="container">
+  <main>
+          {{{ body }}}
+  </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start text-muted">
+        
         <h1 classs="row justify-content-md-center" id="footer_text">Thanks for visiting!</h1>      
     </footer>
 
+  <!-- Section: Social media -->
+  <section
+    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+
+    <div>
+
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section id="footer" class="pt-3">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Shane's List
+          </h6>
+          <p>
+            At Shane's list we strive for a marketplace that puts 
+            simplicity first, with the minimum amount of personal information
+            necessary. 
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <a href="https://nodejs.org/en/" class="text-reset">Node</a>
+          </p>
+          <p>
+            <a href="https://handlebarsjs.com/" class="text-reset">HandleBars</a>
+          </p>
+          <p>
+            <a href="https://sequelize.org/" class="text-reset">Sequelize</a>
+          </p>
+          <p>
+            <a href="https://www.mysql.com/" class="text-reset">MySQL</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h6>
+          <p><i class="fas fa-home me-3"></i> Eagle Creek, OR 97022, US</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@shaneslist.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> 555-555-5555</p>
+          <p><i class="fas fa-print me-3"></i> + 01-555-555-5555</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->  
+  <div class="text-center p-4" style="background-color: rgba(113, 156, 163, 0.73);">
+    © 2022 Copyright:
+    <a class="text-reset fw-bold" href="http:/shaneslist.com">Shaneslist.com</a>
+  </div>
+  <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
 
 </body>
-
 </html>

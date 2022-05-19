@@ -1,17 +1,15 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, Category, User, Comment, //Vote 
-} = require('../models');
+const { Posts, Category, User, Comment } = require('../models');
 
 router.get('/', (req, res) => {
     console.log('==================================');
-    Post.findAll({
+    Posts.findAll({
         attributes: [
             'post_id',
             'title',
             'description',
             'product_category'
-           // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
         ],
         include: [
             {
@@ -42,7 +40,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/post/:post_id', (req, res) => {
-    Post.findOne({
+    Posts.findOne({
         where: {
             post_id: req.params.post_id
         },
@@ -55,7 +53,7 @@ router.get('/post/:post_id', (req, res) => {
         include: [
             {
                 model: Comment,
-                attributes: ['comment_id', 'comment_text', 'comment_user_id'],
+                attributes: ['comment_id', 'comment_text', 'comment_user_id', 'created_at'],
                 include: {
                     model: User,
                     attributes: ['username']
@@ -85,6 +83,47 @@ router.get('/post/:post_id', (req, res) => {
                 post,
             //    loggedIn: req.session.loggedIn 
             });
+        })    
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+    });
+});
+
+
+router.get('/categories/:category_id', (req, res) => {
+    Category.findOne({
+        where: {
+            category_id: req.params.category_id
+        },
+        attributes: [
+            'category_id',
+            'category_name'
+        ],
+        include: [
+            {
+                model: Posts,
+                attributes: ['product_category', 'title', 'description'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+        ]
+    })
+        .then(dbCategoryData => {
+            if (!dbCategoryData) {
+                res.status(404).json({ message: 'This category does not exist' });
+                return;
+            }
+            // serialize data 
+            const category = dbCategoryData.get({ plain: true });
+            //console.log(dbCategoryData)
+      
+            // pass data to template
+            res.render('category', { category }
+            //    loggedIn: req.session.loggedIn 
+            );
         })    
         .catch(err => {
             console.log(err);

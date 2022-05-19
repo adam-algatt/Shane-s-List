@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const {
   User,
-  Post,
+  Posts,
   Comment
 } = require('../../models');
 
@@ -35,7 +35,7 @@ router.get('/:user_id', (req, res) => {
       exclude: ['password'],
     
       include: [{
-          model: Post,
+          model: Posts,
           attributes: ['post_user_id', 'title', 'product_category', 'created_at'],
         },
         // {
