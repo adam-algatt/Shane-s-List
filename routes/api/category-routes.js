@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Category, Posts, User } = require('../../models');
 
+// get category by id
 router.get('/:category_id', (req, res) => {
     Category.findOne({
         where: {

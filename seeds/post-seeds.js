@@ -11,13 +11,13 @@ const postData = [
     post_user_id: 2,
     title:  'Camping gear',
     description: 'Six man tent, cookstove, cooler, 4 sleeping bags.  $50',
-    product_category: 2
+    product_category: 5
   },
   {
     post_user_id: 3,
     title:  'Leather jacket',
     description: 'Black leather jacket.  Size large.  Rarely worn.  $30',
-    product_category: 3
+    product_category: 2
   },
   {
     post_user_id: 4,
@@ -29,7 +29,7 @@ const postData = [
     post_user_id: 5,
     title:  'Sony Playstation',
     description: 'Still in box.  $40.',
-    product_category: 5
+    product_category: 3
   },
 ];
 

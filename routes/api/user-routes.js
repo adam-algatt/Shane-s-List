@@ -22,6 +22,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// get single user by user_id
 router.get('/:user_id', (req, res) => {
   User.findOne({
       where: {
@@ -60,8 +61,8 @@ router.get('/:user_id', (req, res) => {
     });
 });
 
+// create user
 router.post('/', (req, res) => {
-  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
       username: req.body.username,
       email: req.body.email,
@@ -74,8 +75,8 @@ router.post('/', (req, res) => {
     });
 });
 
+// existing user login
 router.post('/login', (req, res) => {
-  // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
     where: {
       email: req.body.email
@@ -90,8 +91,8 @@ router.post('/login', (req, res) => {
 
     res.json({ user: dbUserData });
 
-    // Verify user
-    const validatePassword = db.UserData.checkPassword(req.body.password);
+    // Verify user with password
+    const validatePassword = dbUserData.checkPassword(req.body.password);
 
     if (!validatePassword) {
       res.status(400).json({
@@ -107,8 +108,8 @@ router.post('/login', (req, res) => {
   });
 });
 
+// change existing user
 router.put('/:id', (req, res) => {
-  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
 
   // pass in req.body instead to only update what's passed through
   User.update(req.body, {
@@ -132,6 +133,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
+//delete user
 router.delete('/:user_id', (req, res) => {
   User.destroy({
       where: {

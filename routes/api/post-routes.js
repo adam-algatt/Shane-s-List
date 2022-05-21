@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
       'post_user_id',
       'description',
       'product_category',
-      [sequelize.literal('(SELECT COUNT(*) FROM comment WHERE post.post_id = comment.post_id)'), 'comment_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM comment WHERE posts.post_id = comment.post_id)'), 'comment_count']
     ],
     include: [
         // // include the Comment model here:
@@ -64,6 +64,7 @@ router.get('/:post_id', (req, res) => {
         model: Comment,
         attributes: ['comment_id', 'comment_user_id', 'comment_text', 'created_at'],
         include: {
+          // include User model here
           model: Posts,
           attributes: ['title']
         }
