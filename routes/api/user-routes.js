@@ -80,21 +80,19 @@ router.post('/login', (req, res) => {
   User.findOne({
     where: {
       email: req.body.email
-    }
-  }).then(dbUserData => {
-    if (!dbUserData) {
-      res.status(400).json({
-        message: 'No user with that email address!'
-      });
+      }
+    }).then(dbUserData => {
+      if (!dbUserData) {
+        res.status(400).json({ message: 'No user with that email address!' });
       return;
-    }
+      }
 
-    res.json({ user: dbUserData });
+    //res.json({ user: dbUserData });
 
     // Verify user with password
-    const validatePassword = dbUserData.checkPassword(req.body.password);
+    const validPassword = dbUserData.checkPassword(req.body.password);
 
-    if (!validatePassword) {
+    if (!validPassword) {
       res.status(400).json({
         message: 'Incorrect password!'
       });

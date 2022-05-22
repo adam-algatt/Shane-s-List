@@ -39,6 +39,14 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+router.get('/register', (req, res) => {
+    // if (req.session.loggedIn) {
+    //     res.redirect('/');
+    //     return;
+    // }
+    res.render('register');
+});
+
 router.get('/post/:post_id', (req, res) => {
     Posts.findOne({
         where: {
