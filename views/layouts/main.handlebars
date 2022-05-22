@@ -2,44 +2,48 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shane's List</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/stylesheets/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shane's List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
+  <nav class="navbar fixed-top navbar-light bg-light p-3" id="nav">
+    <ul class="navbar-nav d-inline justify-content-center">
+      <a href="/login" class="nav-link d-inline" id="login">Login</a>
+      <a href="/register" class="nav-link d-inline ml-3" id="register">Register</a>
+    </ul>
 
-          <nav class="navbar fixed-top navbar-light bg-light p-3">
-        <ul class="navbar-nav d-inline justify-content-center">
-          <a href="/login" class="nav-link d-inline" id="login">Login</a>
-          <a href="/register" class="nav-link d-inline ml-3" id="register">Register</a>
-        </ul>
-        <ul class="navbar-nav d-inline">
-        <a class="navbar-brand" href="/">Shane's List</a>
-      </ul>
-      <ul class="navbar-nav ml auto d-inline">
-        <a href="/dashboard"class="nav-link" id="sell">Sell an Item</a>
-      </ul>
-      </nav>
+    <ul class="navbar-nav d-inline mx-auto">
+      <a href="/" class="navbar-brand">Shane's List</a>
+    </ul>
 
+    <ul class="navbar-nav ml auto d-inline"></ul>
+    {{!-- {{#if loggedIn}} --}}
+    <a href="/dashboard" class="nav-link" id="sell">Sell an Item</a>
+    {{!-- {{/if}} --}}
+    </ul>
+  </nav>
 
-    <div class="container-fluid" id="subtitle">
-        <h2 class="row justify-content-md-center p-4">Buy and Sell Your Stuff</h2>
-    </div>
+  <div class="container-fluid" id="subtitle">
+    <h2 class="row justify-content-md-center p-4">Buy and Sell Your Stuff</h2>
+  </div>
 
-          <div class="container-fluid d-flex gy-2 gx-1 justify-content-center flex-wrap" id="box">
+  <div class="container-fluid d-flex gy-2 gx-1 justify-content-center flex-wrap" id="box">
     <div class="col-xl-3 col-md-6 col-sm-12 mt-sm-4">
       <div class="card">
         <div class="card-content">
           <div class="card-body">
-            <img src="https://manhart-performance.de/wp-content/uploads/2021/03/MANHART-McLaren-720S-Front-Page-Slider.jpg" alt="" class="card-img img-fluid mb-1">
-          <h4 class="card-title text-center">Automotive</h4>
-         <p class="card-text"></p>
-         <a href="http://localhost:3001/api/categories/1" class="btn btn-primary p-2">view posts</a>
-        </div>
+            <img
+              src="https://manhart-performance.de/wp-content/uploads/2021/03/MANHART-McLaren-720S-Front-Page-Slider.jpg"
+              alt="" class="card-img img-fluid mb-1">
+            <h4 class="card-title text-center">Automotive</h4>
+            <p class="card-text"></p>
+            <a href="/categories/1" class="btn btn-primary p-2">view posts</a>
+          </div>
         </div>
       </div>
     </div>
@@ -48,24 +52,28 @@
       <div class="card">
         <div class="card-content">
           <div class="card-body">
-            <img src="https://boutiquestoredesign.com/wp-content/uploads/2018/09/european-style-dress-display-stand-manufacturers.jpg" alt="" class="card-img img-fluid mb-1">
-          <h4 class="card-title text-center">Clothing</h4>
-         <p class="card-text"></p>
-         <a href="http://localhost:3001/api/categories/2" class="btn btn-primary p-2 text-center">view posts</a>
-        </div>
+            <img
+              src="https://boutiquestoredesign.com/wp-content/uploads/2018/09/european-style-dress-display-stand-manufacturers.jpg"
+              alt="" class="card-img img-fluid mb-1">
+            <h4 class="card-title text-center">Clothing</h4>
+            <p class="card-text"></p>
+            <a href="/categories/2" class="btn btn-primary p-2 text-center">view posts</a>
+          </div>
         </div>
       </div>
     </div>
-    
+
     <div class="col-xl-3 col-md-6 col-sm-12 mt-md-4 mt-sm-4">
       <div class="card">
         <div class="card-content">
           <div class="card-body">
-            <img src="https://i.kinja-img.com/gawker-media/image/upload/s--L_CNoEJ_--/c_fill,fl_progressive,g_center,h_900,q_80,w_1600/18g6su9j6sf6ojpg.jpg" alt="" class="card-img img-fluid mb-1">
-          <h4 class="card-title text-center">Electronics</h4>
-         <p class="card-text"></p>
-         <a href="http://localhost:3001/api/categories/3" class="btn btn-primary p-2 text-center">view posts</a>
-        </div>
+            <img
+              src="https://i.kinja-img.com/gawker-media/image/upload/s--L_CNoEJ_--/c_fill,fl_progressive,g_center,h_900,q_80,w_1600/18g6su9j6sf6ojpg.jpg"
+              alt="" class="card-img img-fluid mb-1">
+            <h4 class="card-title text-center">Electronics</h4>
+            <p class="card-text"></p>
+            <a href="/categories/3" class="btn btn-primary p-2 text-center">view posts</a>
+          </div>
         </div>
       </div>
     </div>
@@ -76,11 +84,12 @@
       <div class="card">
         <div class="card-content">
           <div class="card-body">
-            <img src="https://hips.hearstapps.com/hbu.h-cdn.co/assets/16/42/1476907189-study.jpg" alt="" class="card-img img-fluid mb-1">
-          <h4 class="card-title text-center">Home</h4>
-         <p class="card-text"></p>
-         <a href="http://localhost:3001/api/categories/4" class="btn btn-primary p-2 text-center">view posts</a>
-        </div>
+            <img src="https://hips.hearstapps.com/hbu.h-cdn.co/assets/16/42/1476907189-study.jpg" alt=""
+              class="card-img img-fluid mb-1">
+            <h4 class="card-title text-center">Home</h4>
+            <p class="card-text"></p>
+            <a href="/categories/4" class="btn btn-primary p-2 text-center">view posts</a>
+          </div>
         </div>
       </div>
     </div>
@@ -89,35 +98,37 @@
       <div class="card">
         <div class="card-content">
           <div class="card-body">
-            <img src="https://assets.thesca.org/styles/840x480/s3/s3fs-public/field/image/OutdoorsJumping_Pixabay_840x480.png?itok=fxEC8G6d" alt="" class="card-img img-fluid mb-1">
-          <h4 class="card-title text-center">Outdoors</h4>
-         <p class="card-text"></p>
-         <a href="http://localhost:3001/api/categories/5" class="btn btn-primary p-2 text-center">view posts</a>
-        </div>
+            <img
+              src="https://assets.thesca.org/styles/840x480/s3/s3fs-public/field/image/OutdoorsJumping_Pixabay_840x480.png?itok=fxEC8G6d"
+              alt="" class="card-img img-fluid mb-1">
+            <h4 class="card-title text-center">Outdoors</h4>
+            <p class="card-text"></p>
+            <a href="/categories/5" class="btn btn-primary p-2 text-center">view posts</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <!-- <script src="/javascript/view_posts.js"></script> -->
 
-        <script type="module" src="/javascript/view_posts.js"></script>
-        <h2 class="mx-auto text-center pb-5">User Posts</h3>
-        <div class="wrapper">
-        <div class="divider div-transparent pb-4"></div>
-        </div>
-        <main>
-            {{{ body }}}
-        </main>
+  <h2 class="mx-auto text-center py-5">User Posts</h2>
+  <div class="wrapper">
+    <div class="divider div-transparent pb-4"></div>
+  </div>
 
- 
-
-
-         
+  <main>
+    {{{ body }}}
+  </main>
 
   <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted">
+  <footer class="text-center text-lg-start text-muted pt-5">
+
+    <h1 classs="row justify-content-md-center" id="footer_text">Thanks for visiting!</h1>
+  </footer>
+
   <!-- Section: Links  -->
-  <section id="footer">
-    <div class="container text-center text-md-start pt-3">
+  <section id="footer" class="pt-3">
+    <div class="container text-center text-md-start mt-5">
       <!-- Grid row -->
       <div class="row mt-3">
         <!-- Grid column -->
@@ -127,9 +138,9 @@
             <i class="fas fa-gem me-3"></i>Shane's List
           </h6>
           <p>
-            At Shane's list we strive for a marketplace that puts 
+            At Shane's list we strive for a marketplace that puts
             simplicity first, with the minimum amount of personal information
-            necessary. 
+            necessary.
           </p>
         </div>
         <!-- Grid column -->
@@ -156,7 +167,7 @@
         <!-- Grid column -->
 
         <!-- Grid column -->
-        
+
         <!-- Grid column -->
 
         <!-- Grid column -->
@@ -180,13 +191,15 @@
   </section>
   <!-- Section: Links  -->
 
-  <!-- Copyright -->  
+  <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(113, 156, 163, 0.73);">
     © 2022 Copyright:
     <a class="text-reset fw-bold" href="http:/shaneslist.com">Shaneslist.com</a>
   </div>
   <!-- Copyright -->
-</footer>
+  </footer>
+  <!-- Footer -->
 
 </body>
+
 </html>

@@ -1,3 +1,4 @@
+
 async function viewPost(event) {
     event.preventDefault();
         
@@ -17,4 +18,3 @@ async function viewPost(event) {
 }
 
 document.querySelector('#category_icon').addEventListener('click', viewPost);
-
