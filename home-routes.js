@@ -15,21 +15,14 @@ router.get('/', (req, res) => {
             {
                 model: Category,
                 attributes: ['category_name']
-
-            },
-            {
-                model: User,
-                attributes: ['username', 'email']
-            },
+            }
         ]
     })
         .then(dbPostData => {
             const posts = dbPostData.map(post => post.get({ plain: true }));
             res.render('homepage', { 
-              
                 posts, 
-            //    loggedIn: req.session.loggedIn 
-
+               loggedIn: req.session.loggedIn 
             });
         })
         .catch(err => {
@@ -38,25 +31,9 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/login', (req, res) => {
-    // if (req.session.loggedIn) {
-    //     res.redirect('/');
-    //     return;
-    // }
-    res.render('login');
-});
-
-router.get('/register', (req, res) => {
-    // if (req.session.loggedIn) {
-    //     res.redirect('/');
-    //     return;
-    // }
-    res.render('register');
-});
 
 
-router.get('/posts/:post_id', (req, res) => {
-
+router.get('/post/:post_id', (req, res) => {
     Posts.findOne({
         where: {
             post_id: req.params.post_id
@@ -96,11 +73,9 @@ router.get('/posts/:post_id', (req, res) => {
             const post = dbPostData.get({ plain: true });
             
             // pass data to template
-
             res.render('single-post', { 
                 post,
             //    loggedIn: req.session.loggedIn 
-
             });
         })    
         .catch(err => {
@@ -141,15 +116,29 @@ router.get('/categories/:category_id', (req, res) => {
       
             // pass data to template
             res.render('category', { category }
-
             //    loggedIn: req.session.loggedIn 
-
             );
         })    
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
     });
+});
+
+router.get('/login', (req, res) => {
+     if (req.session.loggedIn) {
+       res.redirect('/');
+         return;
+     }
+    res.render('login');
+});
+
+router.get('/register', (req, res) => {
+     if (req.session.loggedIn) {
+         res.redirect('/');
+         return;
+     }
+    res.render('register');
 });
 
 module.exports = router;

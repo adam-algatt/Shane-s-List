@@ -15,14 +15,29 @@ const PORT = process.env.PORT || 3001;
 
 const sequelize = require('./config/connection');
 
-const hbs =exphbs.create({ helpers });
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
-const initializePassport = require('./passport-config.js');
-initializePassport(
-  passport,
-  email => users.find(user => user.email === email),
-  id => users.find(user => user.id === id)
-)
+const sess = {
+  secret: "Not so secret secret",
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
+};
+
+app.use(session(sess));
+
+
+
+//const initializePassport = require('./passport-config.js');
+//initializePassport(
+ // passport,
+ // email => users.find(user => user.email === email),
+ // id => users.find(user => user.id === id)
+//)
+
 
 // const users = []
 
@@ -39,6 +54,9 @@ initializePassport(
 // app.use(passport.initialize())
 // app.use(passport.session())
 // app.use(methodOverride('_method'))
+
+const hbs =exphbs.create({ helpers });
+
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
