@@ -5,7 +5,7 @@ body, html {
   font-family: sans-serif;
   color: #333;
   overflow-x: hidden;
-  /* background-color: rgba(166, 255, 153, 0.21); */
+  box-sizing: border-box;
 }
 
 ul {
@@ -23,12 +23,12 @@ ul {
   font-weight: bolder;
 } 
 
-#login {
-  font-weight: bolder;
+#nav .nav-link {
+ color: rgba(0, 0, 0, 0.4);
 }
 
-#register {
-  font-weight: bolder;
+#nav .navbar-brand {
+  font-size: xx-large;
 }
 
 #header_text {
@@ -46,57 +46,25 @@ ul {
   padding-bottom: 36px;
 }
 
-
-#auto_btn {
-  background-repeat: no-repeat;
-  background-position: center;
-  min-height: clamp(150px, 200px, 350px);
-  min-width: clamp(150px, 200px, 350px);
-  background-size: 100%;
-  background-image: url("https://media.istockphoto.com/vectors/car-icon-auto-vehicle-isolated-transport-icons-automobile-silhouette-vector-id1273534607?k=20&m=1273534607&s=612x612&w=0&h=Uynt53JLF7_JUxklSlCNP-KVm-CNLUkgpgewc2AOO2I=");
+/* card styling */
+.card img {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
 }
 
-#clothing_btn {
-  background-repeat: no-repeat;
-  background-position: center;
-  min-height: clamp(150px, 200px, 350px);
-  min-width: clamp(150px, 200px, 350px);
-  background-size: 75%; 
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzYamufnM49T5AqY2h40awLvlHLhr3C8Xc_g&usqp=CAU")
+#box {
+background-color: grey;
 }
 
-#electronics_btn {
-  background-repeat: no-repeat;
-  background-position: center;
-  min-height: clamp(150px, 200px, 350px);
-  min-width: clamp(150px, 200px, 350px);
-  background-size: 60%; 
-  background-image: url("https://static.thenounproject.com/png/37565-200.png");
-}
+/* card styling end */
 
-#home_btn {
-  background-repeat: no-repeat;
-  background-position: center;
-  min-height: clamp(150px, 200px, 350px);
-  min-width: clamp(150px, 200px, 350px);
-  background-size: 70%; 
-  background-image: url("https://i.pinimg.com/originals/a8/be/9c/a8be9cce0543ef25ba2403eedde4e8ac.png");
-}
 
-#outdoors_btn {
-  background-repeat: no-repeat;
-  background-position: center;
-  min-height: clamp(150px, 200px, 350px);
-  min-width: clamp(150px, 200px, 350px);
-   background-size: 65%; 
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnRO-7g77IiXKIqcfkflUlkubmWwWwM2A0YA&usqp=CAU");
-}
-
-#category-icon-container a {
+/* #category-icon-container a {
  padding-top: 12px;
  padding-bottom: 36px;
   background-color: white;
-  }
+  } */
 
   /* Category Icon End */
 
