@@ -99,14 +99,14 @@ router.post('/login', (req, res) => {
       return;
     }
 
-    req.session.save(() => {
-      req.session.user_id = dbUserData.user_id;
-      req.session.username = dbUserData.username;
-      req.session.loggedIn = true;
+    // req.session.save(() => {
+    //   req.session.user_id = dbUserData.user_id;
+    //   req.session.username = dbUserData.username;
+    //   req.session.loggedIn = true;
 
     res.json({
       user: dbUserData,
-      message: 'You are now logged in!' });
+      // message: 'You are now logged in!' });
     });
   });
 });

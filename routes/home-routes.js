@@ -15,7 +15,11 @@ router.get('/', (req, res) => {
             {
                 model: Category,
                 attributes: ['category_name']
-            }
+            },
+            {
+                model: User,
+                attributes: ['username', 'email']
+            },
         ]
     })
         .then(dbPostData => {
@@ -46,7 +50,7 @@ router.get('/register', (req, res) => {
     res.render('register');
 });
 
-router.get('/post/:post_id', (req, res) => {
+router.get('/posts/:post_id', (req, res) => {
     Posts.findOne({
         where: {
             post_id: req.params.post_id
@@ -86,8 +90,7 @@ router.get('/post/:post_id', (req, res) => {
             const post = dbPostData.get({ plain: true });
             
             // pass data to template
-            res.render('single-post', { 
-                post, loggedIn: req.session.loggedIn 
+            res.render('single-post', { post, //loggedIn: req.session.loggedIn 
             });
         })    
         .catch(err => {
