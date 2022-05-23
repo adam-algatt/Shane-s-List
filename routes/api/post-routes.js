@@ -92,6 +92,9 @@ router.post('/', (req, res) => {
       description: req.body.description,
       product_category: req.body.product_category,
       post_user_id: req.body.post_user_id
+    }, {
+      where: {
+      post_user_id: req.session.post_user_id}
     })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {

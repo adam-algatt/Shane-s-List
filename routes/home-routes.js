@@ -121,7 +121,7 @@ router.get('/categories/:category_id', (req, res) => {
         include: [
             {
                 model: Posts,
-                attributes: ['product_category', 'title', 'description'],
+                attributes: ['product_category', 'title', 'description', 'post_id'],
                 include: {
                     model: User,
                     attributes: ['username']
