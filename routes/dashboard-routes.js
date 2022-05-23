@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment } = require('../models');
-//const withAuth = require('../utils/auth');
+const { Posts, User, Comment } = require('../models');
+const withAuth = require('../utils/auth');
 
 router.get('/', // withAuth, 
     (req, res) => {
-       Post.findAll({
+       Posts.findAll({
               //where: {
                      // use the ID from the session
                     // user_id: req.session.user_id
@@ -15,7 +15,6 @@ router.get('/', // withAuth,
                     'title',
                     'description',
                     'created_at',
-                    //[sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
               ],
             //   include: [
             //          {
@@ -35,7 +34,7 @@ router.get('/', // withAuth,
               .then(dbPostData => {
                      // serialize data before passing to the template
                      const posts = dbPostData.map(post => post.get({ plain: true }));
-                     res.render('dashboard', { posts, //loggedIn: true 
+                     res.render('dashboard', { posts, loggedIn: true 
                     });
               })
               .catch(err => {
