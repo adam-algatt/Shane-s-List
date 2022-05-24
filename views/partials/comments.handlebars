@@ -1,0 +1,13 @@
+<div class="comments container-fluid ml-5 pl-5 pt-5">
+    <h4>Previous comments:</h4>
+    {{#each this}}
+    <section class="comment">
+        <div class="meta">
+            <h5> Posted by {{user.username}} on {{format_date created_at}} </h5>
+        </div>
+        <div class="text">
+            {{comment_text}}
+        </div>
+    </section>
+    {{/each}}
+</div>

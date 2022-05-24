@@ -1,0 +1,170 @@
+body, html {
+  max-width: 100%;
+  padding: 0;
+  margin: auto;
+  font-family: sans-serif;
+  color: #333;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+.container-fluid {
+  max-width: 98vw;
+  /* min-height: fit-content; */
+
+}
+
+.col {
+  text-align: center;
+  font-weight: bolder;
+} 
+
+#nav .nav-link {
+ color: rgba(0, 0, 0, 0.4);
+}
+
+#nav .navbar-brand {
+  font-size: xx-large;
+}
+
+#header_text {
+  border-width: 12px;
+}
+
+#subtitle {
+  background-color: rgb(174, 179, 184);
+  margin: 10% auto 5% auto;
+}
+
+#category_text {
+  padding-top: 24px;
+  font-size: larger;
+  padding-bottom: 36px;
+}
+
+/* card styling */
+.card img {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+#box {
+background-color: grey;
+}
+
+/* card styling end */
+
+
+/* #category-icon-container a {
+ padding-top: 12px;
+ padding-bottom: 36px;
+  background-color: white;
+  } */
+
+  /* Category Icon End */
+
+  /* start hr pre injected user posts */
+  .wrapper {
+    padding-bottom: 80px; 
+  }
+
+  .divider
+{
+	position: relative;
+	margin-top: 50px;
+	height: 1px;
+  padding-bottom: 35px;
+}
+
+.div-transparent:before
+{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 5%;
+	right: 5%;
+	width: 90%;
+	height: 1px;
+	background-image: linear-gradient(to right, transparent, rgb(48,49,51), transparent);
+}
+
+
+  /* End  hr pre injected user posts */
+
+#footer {
+background-color:rgba(55, 233, 198, 0.2);
+margin: 50px 0 0 0;
+padding: 0;
+width: 100%;
+}
+
+
+#title_text {
+  font-weight: bold;
+}
+
+.post_label {
+  font-weight: bold;
+  padding-left: 12px;
+}
+
+.post_info {
+  font-weight: lighter;
+}
+
+#post-title:focus, #post-description:focus {
+  outline: none;
+  border: 1px solid #3486eb;
+}
+#post-title {
+  width: 100%;
+  height: 35px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+}
+#post-description {
+  width: 100%;
+  height: 70px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+; 
+}
+#catergory_div {
+  padding: 6px;
+}
+
+#category {
+  margin: 12px;
+  padding: 8px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 20px;
+}
+
+.btn {
+  background-color: #225ca3;
+  border: 0;
+  padding: 1%;
+  color: white;
+  font-weight: bold;
+  transition: background-color .1s;
+  cursor: pointer;
+  border-radius: 5px;
+  min-width: fit-content;
+}
