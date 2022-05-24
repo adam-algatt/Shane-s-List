@@ -13,8 +13,12 @@
 <body>
   <nav class="navbar fixed-top navbar-light bg-light p-3" id="nav">
     <ul class="navbar-nav d-inline justify-content-center">
+      {{#if loggedIn}}
+      <button id="logout" class="btn-no-style">logout</button>
+      {{else}}
       <a href="/login" class="nav-link d-inline" id="login">Login</a>
       <a href="/register" class="nav-link d-inline ml-3" id="register">Register</a>
+      {{/if}}
     </ul>
 
     <ul class="navbar-nav d-inline mx-auto">
@@ -202,6 +206,10 @@
   <!-- Copyright -->
   </footer>
   <!-- Footer -->
+
+    {{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+    {{/if}}
 
 </body>
 

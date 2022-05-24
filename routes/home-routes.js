@@ -25,11 +25,9 @@ router.get('/', (req, res) => {
     })
         .then(dbPostData => {
             const posts = dbPostData.map(post => post.get({ plain: true }));
-            res.render('homepage', { 
-              
+            res.render('homepage', {  
                 posts, 
                 loggedIn: req.session.loggedIn 
-
             });
         })
         .catch(err => {
@@ -39,18 +37,18 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-    // if (req.session.loggedIn) {
-    //     res.redirect('/');
-    //     return;
-    // }
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
     res.render('login');
 });
 
 router.get('/register', (req, res) => {
-    // if (req.session.loggedIn) {
-    //     res.redirect('/');
-    //     return;
-    // }
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
     res.render('register');
 });
 
@@ -136,14 +134,12 @@ router.get('/categories/:category_id', (req, res) => {
             }
             // serialize data 
             const category = dbCategoryData.get({ plain: true });
-            //console.log(dbCategoryData)
       
             // pass data to template
-            res.render('category', { category }
-
-            //    loggedIn: req.session.loggedIn 
-
-            );
+            res.render('category', { 
+                category, 
+                loggedIn: req.session.loggedIn 
+            });
         })    
         .catch(err => {
             console.log(err);
