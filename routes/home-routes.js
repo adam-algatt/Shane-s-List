@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
             res.render('homepage', { 
               
                 posts, 
-            //    loggedIn: req.session.loggedIn 
+                loggedIn: req.session.loggedIn 
 
             });
         })
@@ -98,9 +98,8 @@ router.get('/posts/:post_id', (req, res) => {
             // pass data to template
 
             res.render('single-post', { 
-                post,
-            //    loggedIn: req.session.loggedIn 
-
+                post, 
+                loggedIn: req.session.loggedIn 
             });
         })    
         .catch(err => {
@@ -122,7 +121,7 @@ router.get('/categories/:category_id', (req, res) => {
         include: [
             {
                 model: Posts,
-                attributes: ['product_category', 'title', 'description'],
+                attributes: ['product_category', 'title', 'description', 'post_id'],
                 include: {
                     model: User,
                     attributes: ['username']

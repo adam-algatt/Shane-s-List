@@ -1,7 +1,7 @@
 {{> single-post-info post }}
 
 
-{{!-- {{#if loggedIn}} --}}
+{{#if loggedIn}}
 <form class="comment-form container-fluid">
     <div class="px-5 py-3">
         <h4>Leave a comment:</h4>
@@ -13,11 +13,12 @@
        
     </div>
 </form>
-{{!-- {{/if}} --}}
+{{/if}}
 
 {{> comments post.comments }}
 
-{{!-- {{#if loggedIn}} --}}
+{{#if loggedIn}} 
 
 <script src="/javascript/comment.js"></script>
 
+{{/if}}

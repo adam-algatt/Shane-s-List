@@ -1,22 +1,22 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Posts, User, Comment } = require('../models');
-//const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth');
 
-router.get('/', // withAuth, 
+router.get('/', withAuth, 
     (req, res) => {
        Posts.findAll({
-              //where: {
-                     // use the ID from the session
-                    // user_id: req.session.user_id
-              //},
+              where: {
+              // use the ID from the session
+              //post_user_id: req.session.post_user_id
+              },
               attributes: [
                     'post_id',
                     'title',
                     'description',
                     'created_at',
               ],
-            //   include: [
+              include: [
             //          {
             //                 model: Comment,
             //                 attributes: ['id', 'comment_text', 'post_id', 'created_at'],
@@ -25,18 +25,19 @@ router.get('/', // withAuth,
             //                        attributes: ['username']
             //                 }
             //          },
-            //          {
-            //                 model: User,
-            //                 attributes: ['username']
-            //          }
-            //   ]
+                     {
+                            model: User,
+                            attributes: ['username']
+                     }
+              ]
        })
               .then(dbPostData => {
                      // serialize data before passing to the template
                      const posts = dbPostData.map(post => post.get({ plain: true }));
 
-                     res.render('dashboard', { posts, //loggedIn: true 
-
+                     res.render('dashboard', { 
+                            posts, 
+                            loggedIn: true
                     });
               })
               .catch(err => {

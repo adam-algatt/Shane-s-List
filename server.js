@@ -31,12 +31,12 @@ app.use(session(sess));
 
 
 
-//const initializePassport = require('./passport-config.js');
-//initializePassport(
- // passport,
- // email => users.find(user => user.email === email),
- // id => users.find(user => user.id === id)
-//)
+// const initializePassport = require('./passport-config.js');
+// initializePassport(
+//  passport,
+//  email => users.find(user => user.email === email),
+//  id => users.find(user => user.id === id)
+// )
 
 
 // const users = []
@@ -51,9 +51,9 @@ app.use(session(sess));
 //     saveUninitialized: false
 // }))
 
-// app.use(passport.initialize())
-// app.use(passport.session())
-// app.use(methodOverride('_method'))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(methodOverride('_method'))
 
 const hbs =exphbs.create({ helpers });
 
