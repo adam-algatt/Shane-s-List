@@ -14,7 +14,7 @@
   <nav class="navbar fixed-top navbar-light bg-light p-3" id="nav">
     <ul class="navbar-nav d-inline justify-content-center">
       {{#if loggedIn}}
-      <button id="logout" class="btn-no-style">logout</button>
+      <a id="logout" class="nav-link d-inline">logout</a>
       {{else}}
       <a href="/login" class="nav-link d-inline" id="login">Login</a>
       <a href="/register" class="nav-link d-inline ml-3" id="register">Register</a>
