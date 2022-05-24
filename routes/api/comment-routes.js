@@ -44,17 +44,22 @@ router.get('/:comment_id', (req, res) => {
   });
 
 router.post('/', (req, res) => {
-    Comment.create({
-            comment_text: req.body.comment_text,
-            username: req.body.username,
-            post_id: req.body.post_id
-        })
-            .then(dbCommentData => res.json(dbCommentData))
-            .catch(err => {
-                console.log(err);
-                res.status(400).json(err);
-            });
-})
+  // make sure the session exists first
+  if (req.session) { 
+  Comment.create({
+        comment_text: req.body.comment_text,
+        post_id: req.body.post_id,
+
+        // use session id
+        comment_user_id: req.session.user_id
+    })
+      .then(dbCommentData => res.json(dbCommentData))
+      .catch(err => {
+          console.log(err);
+          res.status(400).json(err);
+    });
+  }
+});
 
 router.delete('/:id', (req, res) => {
   Comment.destroy({

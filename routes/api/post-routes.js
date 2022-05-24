@@ -87,20 +87,22 @@ router.get('/:post_id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  Posts.create({
+  // check the session
+  if (req.session) {
+    Posts.create({
       title: req.body.title,
       description: req.body.description,
       product_category: req.body.product_category,
-      post_user_id: req.body.post_user_id
-    }, {
-      where: {
-      post_user_id: req.session.post_user_id}
+      
+      // use session id
+      post_user_id: req.session.user_id
     })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
+  }
 });
 
 
