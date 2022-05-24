@@ -13,8 +13,11 @@
 <body>
   <nav class="navbar fixed-top navbar-light bg-light p-3" id="nav">
     <ul class="navbar-nav d-inline justify-content-center">
+      {{#if loggedIn}}
+      {{else}}
       <a href="/login" class="nav-link d-inline" id="login">Login</a>
       <a href="/register" class="nav-link d-inline ml-3" id="register">Register</a>
+      {{/if}}
     </ul>
 
     <ul class="navbar-nav d-inline mx-auto">
@@ -26,10 +29,19 @@
       <a href="/dashboard" class="nav-link" id="sell">Sell an Item</a>
       {{/if}}
     </ul>
+       <ul class="navbar-nav ml auto d-inline"></ul>
+      {{#if loggedIn}}
+      <a href="/logout" class="nav-link" id="sell">Logout</a>
+      {{/if}}
+    </ul>
   </nav>
 
   <div class="container-fluid" id="subtitle">
+    {{#if loggedIn}}
+    <h2 class="row justify-content-md-center p-4">Welcome to Shane's List {{user.username}}</h2>
+    {{else}}
     <h2 class="row justify-content-md-center p-4">Buy and Sell Your Stuff</h2>
+    {{/if}}
   </div>
 
   <div class="container-fluid d-flex gy-2 gx-1 justify-content-center flex-wrap" id="box">

@@ -40,8 +40,6 @@ app.use(session(sess));
 
 
 // const users = []
-
-// app.set('view-engine', 'ejs')
 // app.use(express.urlencoded({ extended: false }));
 // app.use(flash());
 // app.use(session({
