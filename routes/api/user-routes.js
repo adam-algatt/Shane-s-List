@@ -127,7 +127,7 @@ router.post('/logout', (req, res) => {
 });
 
 // change existing user
-router.put('/:id', (req, res) => {
+router.put('/:user_id', (req, res) => {
 
   // pass in req.body instead to only update what's passed through
   User.update(req.body, {

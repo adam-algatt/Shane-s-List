@@ -108,10 +108,11 @@ router.post('/', (req, res) => {
 
 router.put('/:post_id', (req, res) => {
   Posts.update({
-      title: req.body.title
+      title: req.body.title,
+      post_user_id: req.body.post_user_id
     }, {
       where: {
-        id: req.params.post_id
+        post_id: req.params.post_id
       }
     })
     .then(dbPostData => {
