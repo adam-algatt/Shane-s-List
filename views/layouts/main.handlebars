@@ -14,7 +14,7 @@
   <nav class="navbar fixed-top navbar-light bg-light p-3" id="nav">
     <ul class="navbar-nav d-inline justify-content-center">
       {{#if loggedIn}}
-      <a id="logout" class="nav-link d-inline">logout</a>
+      <a href="/" id="logout" class="nav-link d-inline">Logout</a>
       {{else}}
       <a href="/login" class="nav-link d-inline" id="login">Login</a>
       <a href="/register" class="nav-link d-inline ml-3" id="register">Register</a>
@@ -22,7 +22,7 @@
     </ul>
 
     <ul class="navbar-nav d-inline mx-auto">
-      <a href="/" class="navbar-brand">Shane's List</a>
+      <a href="/" class="navbar-brand" id="home">Shane's List</a>
     </ul>
 
     <ul class="navbar-nav ml auto d-inline"></ul>
@@ -30,6 +30,11 @@
       <a href="/dashboard" class="nav-link" id="sell">Sell an Item</a>
       {{/if}}
     </ul>
+
+      <script src="https://unpkg.com/@popperjs/core@2"></script>
+      <script src="https://unpkg.com/tippy.js@6"></script>
+      <script src="/javascript/script.js"></script>
+
   </nav>
 
   <div class="container-fluid" id="subtitle">
@@ -212,6 +217,7 @@
     {{/if}}
 
 </body>
+
 
 </html>
 
