@@ -8,7 +8,7 @@ router.get('/', withAuth,
        Posts.findAll({
               where: {
               // use the ID from the session
-              //post_user_id: req.session.post_user_id
+              post_user_id: req.session.post_user_id
               },
               attributes: [
                     'post_id',
@@ -17,14 +17,6 @@ router.get('/', withAuth,
                     'created_at',
               ],
               include: [
-            //          {
-            //                 model: Comment,
-            //                 attributes: ['id', 'comment_text', 'post_id', 'created_at'],
-            //                 include: {
-            //                        model: User,
-            //                        attributes: ['username']
-            //                 }
-            //          },
                      {
                             model: User,
                             attributes: ['username']
