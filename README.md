@@ -11,6 +11,8 @@
   * [License](#license)
   * [Contribute](#contribute)
   * [Tests](#tests)
+  * [New Technology](#NewTech)
+  * [Link](#Link)
   
   ## Installation
   No installation necessary.  All you need is access to the internet.
@@ -26,6 +28,13 @@
     
   ## Tests
   No testing required.
+
+  ## NewTech
+  Tippy.js
+  Check it out:  https://atomiks.github.io/tippyjs/
+
+  ## Link
+  Check it out:  https://shanes-list.herokuapp.com/
     
   ## Questions
   Please visit my GitHub Overview page at: https://github.com/adam-algatt/Shanes-List
